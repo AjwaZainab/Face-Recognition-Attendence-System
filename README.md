@@ -1,92 +1,129 @@
-# **Facial Recognition Attendance System**
+# Face Recognition Attendance System
 
-# **Overview**
+## Overview
 
-This project implements a real-time, AI-powered attendance system using facial recognition. It automates the process of marking attendance by identifying enrolled users from a live video feed, making the process accurate and efficient.
+The Face Recognition Attendance System is a deep learning-based web application that automates attendance marking using facial recognition. It detects and recognizes registered users through a webcam and records their attendance in a database, eliminating the need for manual attendance.
 
-## **Project Structure**
+---
 
-The repository is organized to separate the backend logic, machine learning assets, and frontend components for clarity and maintainability.
+## Features
 
-.  
-├── dataset/                     \# Contains raw, un-processed images for each user (e.g., face captures)  
-│   └── SP24-BAI-004/  
-│   └── SP24-BAI-041/  
-├── processed\_dataset/           \# Stores cropped and aligned faces derived from the raw dataset (used for training)  
-│   └── SP24-BAI-004/  
-│   └── SP24-BAI-041/  
-├── static/                      \# Web assets (CSS and JavaScript)  
-│   ├── css/  
-│   │   └── style.css            \# Stylesheet for the web interface  
-│   └── js/  
-│       └── main.js              \# Frontend logic (e.g., webcam handling, API calls)  
-├── templates/                   \# HTML templates for the Flask web application (Jinja)  
-│   ├── dashboard.html           \# Main view after login, showing system summary  
-│   ├── enroll.html              \# Interface for enrolling new users (capturing face images)  
-│   ├── layout.html              \# Base template for consistent navigation and structure  
-│   ├── live\_attendance.html     \# Real-time attendance logging via webcam  
-│   ├── manage\_users.html        \# Admin page for viewing/editing user profiles  
-│   └── view\_attendance.html     \# Page for viewing historical attendance records  
-├── app.py                       \# Main Flask application file (handles routing, prediction, and database interaction)  
-├── attendance.db                \# SQLite or similar database file for storing attendance logs  
-├── attendance\_system.py         \# Secondary Python file (likely contains core ML/utility functions)  
-├── facial\_recognition\_model.h5  \# The trained Keras/TensorFlow model (main ML asset)  
-├── facial\_recognition\_model.tflite \# Optimized model for deployment (e.g., mobile or edge devices)  
-├── label\_encoder.npy            \# NumPy array mapping numerical labels to user IDs  
-└── user\_registry.json           \# JSON file storing metadata for enrolled users
+* Real-time face detection and recognition
+* Automatic attendance marking
+* User registration
+* Attendance records stored in a database
+* Web-based interface built with Flask
+* Deep learning model for accurate face recognition
+* Lightweight TensorFlow Lite model for faster inference
 
-## **Setup and Installation**
+---
 
-### **Prerequisites**
+## Technologies Used
 
-* Python 3.xx  
-* Pip (Python package installer)  
-* A webcam for live attendance and enrollment
+* Python
+* Flask
+* OpenCV
+* TensorFlow / TensorFlow Lite
+* NumPy
+* HTML, CSS, JavaScript
+* SQLite
 
-### **Installation Steps**
+---
 
-1. **Clone the Repository:**  
-   git clone \<repository-url\>  
-   cd Facial-Recognition-Attendance-System
+## Project Structure
 
-2. Install Dependencies:  
-   This project requires common libraries like Flask, TensorFlow/Keras, OpenCV, and NumPy.  
-   pip install flask tensorflow numpy opencv-python scikit-learn
+```text
+Face-Recognition-Attendance-System/
+│
+├── static/
+├── templates/
+├── app.py
+├── attendance_system.py
+├── attendance.db
+├── user_registry.json
+├── facial_recognition_model.tflite
+├── label_encoder.npy
+├── README.md
+└── requirements.txt
+```
 
-   *(Note: You may need to create a requirements.txt file listing all dependencies for easier setup.)*  
-3. Ensure Model Files are Present:  
-   Verify that the following machine learning assets are in the root directory:  
-   * facial\_recognition\_model.h5  
-   * facial\_recognition\_model.tflite  
-   * label\_encoder.npy
+---
 
-## **Usage**
+## Installation
 
-### **1\. Data Preparation (Enrollment)**
+1. Clone the repository
 
-1. **Collect Raw Data:** Place raw images for each user into dedicated subdirectories within the dataset/ folder.  
-2. **Process Data:** Run the relevant script (attendance\_system.py or a function in app.py) to process the raw images (cropping, aligning, normalizing) and save the results into processed\_dataset/. This data is then used to train or update the model.
+```bash
+git clone https://github.com/your-username/Face-Recognition-Attendance-System.git
+```
 
-### **2\. Run the Application**
+2. Navigate to the project folder
 
-Start the Flask web server by running the main application file:
+```bash
+cd Face-Recognition-Attendance-System
+```
 
+3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Run the application
+
+```bash
 python app.py
+```
 
-The application will typically be available at http://127.0.0.1:5000/.
+5. Open your browser and visit
 
-### **3\. Key Endpoints**
+```
+http://127.0.0.1:5000
+```
 
-| Page (templates) | URL (Example) | Functionality |
-| :---- | :---- | :---- |
-| dashboard.html | / or /dashboard | Main administrative dashboard. |
-| enroll.html | /enroll | Capture and register new user faces. |
-| live\_attendance.html | /live | Real-time face detection and attendance logging. |
-| manage\_users.html | /users | View, edit, or delete enrolled user profiles. |
-| view\_attendance.html | /attendance | Browse and filter historical attendance data. |
+---
 
-## **Customization**
+## Dataset
 
-* **Styling:** Modify the appearance of the application by editing static/css/style.css.  
-* **Frontend Logic:** Adjust webcam interactions, button handlers, or live video processing in static/js/main.js.  
-* **Model Retraining:** After enrolling new users via enroll.html, you will need to re-run your training script (likely within attendance\_system.py) to update facial\_recognition\_model.h5 and label\_encoder.npy.
+The original training dataset is **not included** in this repository because it contains private personal images.
+
+To use this project:
+
+* Create your own `dataset/` folder.
+* Add images of authorized users.
+* Retrain the face recognition model using your dataset.
+
+---
+
+## Model Files
+
+The original trained model is not included because it was trained on private images.
+
+You can train a new model using your own dataset or replace the model files with your own trained versions.
+
+---
+
+## Future Improvements
+
+* Multiple face recognition
+* Email notifications
+* Cloud database integration
+* User authentication
+* Attendance analytics dashboard
+* Mobile application support
+
+---
+
+## License
+
+This project is developed for educational and learning purposes.
+
+---
+
+## Author
+
+**Ajwa Zainab**
+
+Bachelor of Artificial Intelligence
+
+Interested in Artificial Intelligence, Machine Learning, Computer Vision, and Deep Learning.
