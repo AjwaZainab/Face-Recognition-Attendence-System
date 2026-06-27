@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2"><i class="bi bi-person-plus-fill"></i> Enroll New User</h1>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary"><i class="bi bi-arrow-left-circle"></i> Back to Dashboard</a>
+</div>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="video-container">
+                    <video id="video" width="100%" height="auto" autoplay muted playsinline></video>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="reg_no" class="form-label">Registration No.</label>
+                    <input type="text" id="reg_no" class="form-control" placeholder="e.g., SP24-BAI-041">
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="e.g., John Doe">
+                </div>
+                <div class="alert alert-info">
+                    <strong>Instructions:</strong> Move your head slightly and change expressions for best results.
+                </div>
+                <button id="captureBtn" class="btn btn-primary w-100"><i class="bi bi-camera"></i> Start Capture</button>
+                <div id="captureProgress" class="progress mt-3" style="height: 25px; display: none;">
+                    <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                </div>
+                <div id="captureStatus" class="mt-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<canvas id="canvas" style="display:none;"></canvas>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-4">
+    <h1 class="h2 me-3"><i class="bi bi-speedometer2"></i> Dashboard</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-center h-100 shadow-sm">
+            <div class="card-body">
+                <i class="bi bi-person-plus-fill fs-1 text-primary"></i>
+                <h5 class="card-title mt-3">Enroll Users</h5>
+                <p class="card-text">Add new users to the system by capturing their photos.</p>
+                <a href="/enroll" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Enroll New User</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center h-100 shadow-sm">
+            <div class="card-body">
+                <i class="bi bi-camera-video fs-1 text-success"></i>
+                <h5 class="card-title mt-3">Live Attendance</h5>
+                <p class="card-text">Start real-time attendance recognition.</p>
+                <a href="/live_attendance" class="btn btn-success"><i class="bi bi-play-btn"></i> Start Recognition</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center h-100 shadow-sm">
+            <div class="card-body">
+                <i class="bi bi-gear-wide-connected fs-1 text-warning"></i>
+                <h5 class="card-title mt-3">System Status</h5>
+                <p class="card-text">
+                    Model Status: 
+                    {% if model_status == 'Trained' %}
+                        <span class="badge bg-success">Trained</span>
+                    {% else %}
+                        <span class="badge bg-danger">Not Trained</span>
+                    {% endif %}
+                </p>
+                <button id="trainBtn" class="btn btn-warning"><i class="bi bi-robot"></i> Train Model</button>
+                <div id="trainingStatus" class="mt-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-4 shadow-sm">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="bi bi-clock-history"></i> Recent Attendance Records</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Person</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td><i class="bi bi-person-fill"></i> {{ record[1] }} ({{ record[0] }})</td>
+                    <td>{{ record[2] }}</td>
+                    <td>{{ record[3] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" class="text-center">No records found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
