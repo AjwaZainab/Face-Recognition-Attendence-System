@@ -54,7 +54,7 @@ Face-Recognition-Attendance-System/
 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Face-Recognition-Attendance-System.git
+git clone https://github.com/AjwaZainab/Face-Recognition-Attendance-System.git
 ```
 
 2. Navigate to the project folder
